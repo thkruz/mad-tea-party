@@ -1,0 +1,41 @@
+{
+    "name": "mad-tea-party",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "parcel src/index.html --open",
+        "build": "parcel build src/index.html",
+        "test": "jest --watch"
+    },
+    "author": "",
+    "license": "ISC",
+    "staticFiles": {
+        "staticPath": "./src/static"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.9.0",
+        "@emotion/styled": "^11.8.1",
+        "@mui/icons-material": "^5.8.2",
+        "@mui/material": "^5.8.2",
+        "react": "^18.1.0",
+        "react-dom": "^18.1.0",
+        "react-router": "^6.3.0",
+        "react-router-dom": "^6.3.0"
+    },
+    "devDependencies": {
+        "@types/jest": "^24.9.1",
+        "@types/react": "^18.0.10",
+        "@types/react-dom": "^18.0.5",
+        "@types/react-router": "^5.1.18",
+        "@types/react-router-dom": "^5.3.3",
+        "imports-loader": "^4.0.0",
+        "jest": "^28.1.0",
+        "parcel": "^2.6.0",
+        "parcel-reporter-static-files-copy": "^1.3.4",
+        "prettier-plugin-organize-imports": "^2.3.4",
+        "process": "^0.11.10",
+        "ts-jest": "^28.0.4",
+        "typescript": "^4.7.3"
+    }
+}
