@@ -6,6 +6,7 @@ import Collapse from '@mui/material/Collapse';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
@@ -25,6 +26,8 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 const CocktailCard = ({ cocktail }) => {
     const [expanded, setExpanded] = useState(false);
 
+    const navigate = useNavigate();
+
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
@@ -33,9 +36,25 @@ const CocktailCard = ({ cocktail }) => {
         <Grid item xs={12} md={6} lg={4} xl={3}>
             <Card>
                 <CardHeader
-                    title={cocktail.name}
-                    sx={{ '& .MuiCardHeader-content': { width: '100%' } }}
-                    subheader={cocktail.ingredients.map(ingredient => ingredient.name).join(', ')}
+                    title={
+                        <Typography
+                            component={Link}
+                            to={`/cocktail/${cocktail.id}`}
+                            sx={{
+                                color: 'inherit',
+                                textDecoration: 'inherit',
+                                fontSize: '1.25rem',
+                                fontWeight: 'bold',
+                            }}>
+                            {cocktail.name}
+                        </Typography>
+                    }
+                    sx={{ '& .MuiCardHeader-content': { width: '90%' } }}
+                    subheader={cocktail.recipe
+                        .map(recipeItem => {
+                            return recipeItem.ingredient?.name;
+                        })
+                        .join(', ')}
                     subheaderTypographyProps={{ textOverflow: 'ellipsis', noWrap: true, width: '100%' }}
                     action={
                         <IconButton aria-label='settings'>

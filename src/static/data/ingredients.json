@@ -1,0 +1,46 @@
+[
+    {
+        "id": 1,
+        "name": "Italicus",
+        "description": "Italian bergamot liqueur",
+        "country": "Italy",
+        "flavors": ["Bergamot"],
+        "price": 27.0,
+        "parent": null,
+        "grandparent": null,
+        "garnish": false
+    },
+    {
+        "id": 2,
+        "name": "Campari",
+        "description": "Italian amaro",
+        "country": "Italy",
+        "flavors": ["Grape", "Orange", "Herbal"],
+        "price": 22.0,
+        "parent": null,
+        "grandparent": null,
+        "garnish": false
+    },
+    {
+        "id": 3,
+        "name": "London Dry Gin",
+        "description": "Juniper forward Gin",
+        "country": "",
+        "flavors": ["Juniper"],
+        "price": 25.0,
+        "parent": 4,
+        "grandparent": null,
+        "garnish": false
+    },
+    {
+        "id": 4,
+        "name": "Gin",
+        "description": "Generic gin",
+        "country": "",
+        "flavors": ["Juniper"],
+        "price": 21.0,
+        "parent": null,
+        "grandparent": null,
+        "garnish": false
+    }
+]

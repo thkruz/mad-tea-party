@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Current",
+        "slug": "current",
+        "cocktailIds": [1, 2, 3, 4, 5]
+    },
+    {
+        "id": 2,
+        "name": "Handcuff Party",
+        "slug": "handcuff-party",
+        "cocktailIds": [2, 3, 4, 5]
+    },
+    {
+        "id": 3,
+        "name": "Pirate Night",
+        "slug": "pirate-night",
+        "cocktailIds": [1, 2, 3]
+    },
+    {
+        "id": 4,
+        "name": "Dinner Party",
+        "slug": "dinner-party",
+        "cocktailIds": [1, 2, 3, 4, 5]
+    },
+    {
+        "id": 5,
+        "name": "Birthday",
+        "slug": "birthday",
+        "cocktailIds": [1, 2, 3, 4, 5]
+    }
+]

@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "parcel src/index.html --open",
+        "start": "parcel --no-cache src/index.html",
         "build": "parcel build src/index.html",
         "test": "jest --watch"
     },
