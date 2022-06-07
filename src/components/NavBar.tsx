@@ -5,7 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import VerifiedIcon from '@mui/icons-material/Verified';
-import { Badge, Typography, useTheme } from '@mui/material';
+import { Badge, Tooltip, Typography, useTheme } from '@mui/material';
 import MuiAppBar from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
@@ -57,13 +57,30 @@ export const NavBar = ({ open, toggleDrawer, toggleDarkMode }) => {
     const toggleMode = () => {
         // Trench => Original
         if (bar.settings?.isTrenchMode) {
-            bar.setSettings({ ...bar.settings, isTrenchMode: false });
+            bar.setSettings({
+                ...bar.settings,
+                isTrenchMode: false,
+                drinkingMode: 'Original',
+                nextDrinkingMode: 'Garrison',
+            });
             // Garrison => Trench
         } else if (bar.settings?.isGarrisonMode) {
-            bar.setSettings({ ...bar.settings, isGarrisonMode: false, isTrenchMode: true });
+            bar.setSettings({
+                ...bar.settings,
+                isGarrisonMode: false,
+                isTrenchMode: true,
+                drinkingMode: 'Trench',
+                nextDrinkingMode: 'Original',
+            });
             // Original => Garrison
         } else {
-            bar.setSettings({ ...bar.settings, isGarrisonMode: true, isTrenchMode: false });
+            bar.setSettings({
+                ...bar.settings,
+                isGarrisonMode: true,
+                isTrenchMode: false,
+                drinkingMode: 'Garrison',
+                nextDrinkingMode: 'Trench',
+            });
         }
     };
 
@@ -85,16 +102,22 @@ export const NavBar = ({ open, toggleDrawer, toggleDarkMode }) => {
                     <MenuIcon />
                 </IconButton>
                 <Typography component='h1' variant='h6' color='inherit' noWrap sx={{ flexGrow: 1 }}>
-                    {location.pathname === '/' ? 'Home' : location.state.menu.name}
+                    {location.pathname === '/' ? 'Home' : null}
+                    {location.pathname.startsWith('/cocktail') ? location.state.cocktail.name : null}
+                    {location.pathname.startsWith('/menu') ? location.state.menu.name : null}
                 </Typography>
-                <IconButton color='inherit' onClick={toggleMode}>
-                    {bar.settings?.isTrenchMode ? <MilitaryTechIcon /> : null}
-                    {bar.settings?.isGarrisonMode ? <FortIcon /> : null}
-                    {!bar.settings?.isTrenchMode && !bar.settings?.isGarrisonMode ? <VerifiedIcon /> : null}
-                </IconButton>
-                <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color='inherit'>
-                    {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-                </IconButton>
+                <Tooltip title={`${bar.settings.drinkingMode} Mode`}>
+                    <IconButton color='inherit' onClick={toggleMode}>
+                        {bar.settings?.isTrenchMode ? <MilitaryTechIcon /> : null}
+                        {bar.settings?.isGarrisonMode ? <FortIcon /> : null}
+                        {!bar.settings?.isTrenchMode && !bar.settings?.isGarrisonMode ? <VerifiedIcon /> : null}
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title={`${theme.palette.mode.charAt(0).toUpperCase() + theme.palette.mode.slice(1)} Mode`}>
+                    <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color='inherit'>
+                        {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                    </IconButton>
+                </Tooltip>
                 <IconButton color='inherit'>
                     <Badge badgeContent={4} color='secondary'>
                         <NotificationsIcon />

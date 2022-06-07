@@ -6,7 +6,7 @@ import Collapse from '@mui/material/Collapse';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
@@ -38,8 +38,7 @@ const CocktailCard = ({ cocktail }) => {
                 <CardHeader
                     title={
                         <Typography
-                            component={Link}
-                            to={`/cocktail/${cocktail.id}`}
+                            onClick={() => navigate(`/cocktail/${cocktail.id}`, { state: { cocktail } })}
                             sx={{
                                 color: 'inherit',
                                 textDecoration: 'inherit',
